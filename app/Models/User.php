@@ -42,4 +42,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function group()
+    {
+        return $this->belongsTo(Group::class,'group_id','id');
+    }
+    public function course()
+    {
+        return $this->belongsToMany(Course::class);
+    }
+    public function order()
+    {
+        return $this->hasMany(Order::class,'user_id','id');
+    }
 }
