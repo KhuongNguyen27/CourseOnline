@@ -13,20 +13,20 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('avatar');
-            $table->varchar('name');
+            $table->string('avatar')->nullable();
+            $table->string('name');
             $table->string('email')->unique();
-            $table->integer('phone');
-            $table->tinyInteger('gender');
-            $table->string('address');
-            $table->date('day_of_birth');
-            $table->integer('point');
-            $table->string('password');
+            $table->string('phone')->unique();
+            $table->tinyInteger('gender')->nullable();
+            $table->string('address')->nullable();
+            $table->date('day_of_birth')->nullable();
+            $table->integer('point')->default(0);
+            $table->string('password')->nullable();
             $table->unsignedBigInteger('group_id');
+            $table->foreign('group_id')->references('id')->on('groups');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->foreign('group_id')->references('id')->on('groups');
         });
     }
 
