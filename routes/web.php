@@ -16,3 +16,6 @@ use App\Http\Controllers\CustomerController;
 Route::get('/', function () {
     return view('admin.master');
 });
+Route::get('/h', function () {
+    return view('admin.master');
+});
