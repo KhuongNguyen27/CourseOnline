@@ -13,6 +13,7 @@
     <meta name="description" content="Responsive admin theme build on top of Bootstrap 4">
     <meta property="og:description" content="Responsive admin theme build on top of Bootstrap 4">
     <link rel="canonical" href="https://uselooper.com">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta property="og:url" content="https://uselooper.com">
     <meta property="og:site_name" content="Looper - Bootstrap 4 Admin Theme">
     <script type="application/ld+json">

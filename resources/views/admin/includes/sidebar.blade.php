@@ -28,12 +28,6 @@
                     <li class="menu-item has-child">
                         <a href="#" class="menu-link"><span class="menu-icon far fa-file"></span> <span class="menu-text">App Pages</span> <span class="badge badge-warning">New</span></a> <!-- child menu -->
                         <ul class="menu">
-                            <li class="menu-item">
-                                <a href="page-clients.html" class="menu-link">Clients</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="page-teams.html" class="menu-link">Teams</a>
-                            </li>
                             <li class="menu-item has-child">
                                 <a href="#" class="menu-link">Team</a> <!-- grand child menu -->
                                 <ul class="menu">

@@ -16,3 +16,9 @@ use App\Http\Controllers\CustomerController;
 Route::get('/', function () {
     return view('admin.layouts.master');
 });
+Route::get('/index', function () {
+    return view('admin.feature.index');
+});
+Route::get('/create', function () {
+    return view('admin.feature.create');
+});
