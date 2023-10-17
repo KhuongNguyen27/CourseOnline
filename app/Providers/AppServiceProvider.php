@@ -5,13 +5,13 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
-/* CustomerService */
-use App\Services\Interfaces\CustomerServiceInterface;
-use App\Services\CustomerService;
+/* CategoryService */
+use App\Services\Interfaces\CategoryServiceInterface;
+use App\Services\CategoryService;
 
-/* CustomerRepository */
-use App\Repositories\Interfaces\CustomerRepositoryInterface;
-use App\Repositories\Eloquents\CustomerRepository;
+/* CategoryRepository */
+use App\Repositories\Interfaces\CategoryRepositoryInterface;
+use App\Repositories\Eloquents\CategoryRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,12 +26,12 @@ class AppServiceProvider extends ServiceProvider
             Tắt dòng binding là thấy tai hại liền :)
         */
         /* Binding Services*/
-        $this->app->singleton(CustomerServiceInterface::class, CustomerService::class);
+        $this->app->singleton(CategoryServiceInterface::class, CategoryService::class);
 
 
         
         /* Binding Repositories*/
-        $this->app->singleton(CustomerRepositoryInterface::class, CustomerRepository::class);
+        $this->app->singleton(CategoryRepositoryInterface::class, CategoryRepository::class);
 
     }
 
