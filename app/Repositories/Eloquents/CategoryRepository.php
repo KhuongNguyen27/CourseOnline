@@ -1,13 +1,13 @@
 <?php
 namespace App\Repositories\Eloquents;
 
-use App\Models\Customer;
-use App\Repositories\Interfaces\CustomerRepositoryInterface;
+use App\Models\Category;
+use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Eloquents\EloquentRepository;
 
-class CustomerRepository extends EloquentRepository implements CustomerRepositoryInterface{
+class CategoryRepository extends EloquentRepository implements CategoryRepositoryInterface{
     function getModel(){
-        return Customer::class;
+        return Category::class;
     }
 
     /* 

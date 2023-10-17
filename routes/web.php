@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,16 +12,5 @@ use App\Http\Controllers\CustomerController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::resource('categories',CategoryController::class);
 
-Route::get('/', function () {
-    return view('admin.layouts.master');
-});
-Route::get('/index', function () {
-    return view('admin.feature.index');
-});
-Route::get('/create', function () {
-    return view('admin.feature.create');
-});
-Route::get('/h', function () {
-    return view('admin.master');
-});

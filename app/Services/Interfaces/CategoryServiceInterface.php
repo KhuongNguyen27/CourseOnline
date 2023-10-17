@@ -1,7 +1,7 @@
 <?php
 namespace App\Services\Interfaces;
 
-interface CustomerServiceInterface extends ServiceInterface{
+interface CategoryServiceInterface extends ServiceInterface{
     // cùng cấp nên không cần use ServiceInterface
 }
 ?>
