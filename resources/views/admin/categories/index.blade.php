@@ -4,7 +4,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active">
-                <a href="#"><i class='bx bx-chevrons-left mr-2'></i>Home</a>
+                <a href="{{ route('categories.index') }}"><i class='bx bx-chevrons-left mr-2'></i>Home</a>
             </li>
         </ol>
     </nav>
@@ -12,14 +12,14 @@
     <div class="d-md-flex align-items-md-start">
         <h1 class="page-title mr-sm-auto">Category</h1>
         <div class="btn-toolbar">
-            <a href="#" class="btn btn-primary mr-2">
+            <a href="{{ route('categories.create') }}" class="btn btn-primary mr-2">
                 <i class='bx bx-add-to-queue'></i>
                 <span class="ml-1">Create</span>
             </a>
-            <a href="#" class="btn btn-primary">
+            <!-- <a href="#" class="btn btn-primary">
                 <i class='bx bx-vertical-bottom'></i>
                 <span class="ml-1">Export excel</span>
-            </a>
+            </a> -->
         </div>
     </div>
 </header>
@@ -30,9 +30,9 @@
                 <li class="nav-item">
                     <a class="nav-link active " href="#">All</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="#">Trash</a>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="card-body">
@@ -52,8 +52,7 @@
                                 <div class="input-group-prepend trigger-submit">
                                     <span class="input-group-text"><span class="bx bx-search-alt-2"></span></span>
                                 </div>
-                                <input type="text" class="form-control" name="query" value=""
-                                    placeholder="Tìm nhanh theo cú pháp (ma:Mã kết quả hoặc ten:Tên kết quả)">
+                                <input type="text" class="form-control" name="query" value="" placeholder="Search....">
                             </div>
                             <div class="input-group-append">
                                 <button class="btn btn-secondary" data-toggle="modal" data-target="#modalSaveSearch"
@@ -66,31 +65,41 @@
                                     <tr>
                                         <th> # </th>
                                         <th>Image</th>
-                                        <th> Địa chỉ </th>
-                                        <th> Số điện thoại </th>
-                                        <th> Chức năng </th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($items as $category)
                                     <tr>
-                                        <td class="align-middle">1</td>
-                                        <td class="align-middle"></td>
-                                        <td class="align-middle">khunog</td>
-                                        <td class="align-middle"></td>
-                                        <td>
-                                            <form style="display:inline" method="post">
-                                                <button class="btn btn-sm btn-icon btn-secondary">
-                                                    <i class='bx bx-edit-alt'></i></button>
-                                            </form>
-                                            <span class="sr-only">Edit</span></a> <a href="#"
+                                        <td class="align-middle">{{ $category->id }}</td>
+                                        <td class="image-container w-25">
+                                            <img class='img-fluid rounded img-thumbnail'
+                                                src="{{ $category->image_url }}" alt="" srcset="">
+                                        </td>
+                                        <td class="align-middle">{{ $category->name }}</td>
+                                        <td class="align-middle">{{ $category->description }}</td>
+                                        <td class='d-flex justify-content-center align-items-center'>
+                                            <span class="sr-only">Edit</span><a
+                                                href="{{ route('categories.edit', $category->id) }}"
                                                 class="btn btn-sm btn-icon btn-secondary"><i
-                                                    class='bx bx-trash'></i><span class="sr-only">Remove</span></a>
+                                                    class='bx bx-edit-alt'></i><span class="sr-only">Remove</span></a>
+                                            <form style="display:inline" method="post"
+                                                action="{{ route('categories.destroy',$category->id) }}">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-sm btn-icon btn-secondary" onclick="return confirm('Are you sure?')">
+                                                    <i class='bx bx-trash'></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <div style="float:right">
-                                {{-- $items->appends(request()->query())->links('pagination::bootstrap-4') --}}
+                                {{ $items->appends(request()->query())->links('pagination::bootstrap-4') }}
                             </div>
                         </div>
                     </form>
