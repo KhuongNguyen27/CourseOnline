@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         Category::factory(10)->create();    
         User::factory(10)->create();
         Course::factory(10)->create();
-        User_course::factory(10)->create();
+        UserCourse::factory(10)->create();
         Order::factory(10)->create();
         Section::factory(10)->create();
         Lession::factory(10)->create();

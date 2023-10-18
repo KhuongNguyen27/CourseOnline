@@ -26,6 +26,7 @@ class CategoryController extends Controller
     {
         try {
             $items = $this->categoryService->paginate(5);
+            return view('admin.categories.index',compact('items'));
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
         }
@@ -36,7 +37,11 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        try {
+            return view('admin.categories.create');
+        } catch (\Exception $e) {
+            Log::error('Bug occurred: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -44,16 +49,34 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        try{
+            $category = new Category();
+            $category->name = $request->name;
+            $category->description = $request->description;
+            $fieldName = 'image_url';
+            if ($request->hasFile($fieldName)) {
+                $get_img = $request->file($fieldName);
+                $path = 'storage/category/';
+                $new_name_img = rand(1,100).$get_img->getClientOriginalName();
+                $get_img->move($path,$new_name_img);
+                $category->image_url = $path.$new_name_img;
+            }
+            $category->save();
+            // alert()->success('Success created');
+            return redirect()->route('categories.index');
+        } catch (\Exception $e) {
+            // alert()->warning('Have problem, Please try again late!');
+            return back();
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show($id)
     {
         try {
-            $items = $this->categoryService->find($category->id);
+            $items = $this->categoryService->find($id);
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
         }
@@ -62,10 +85,11 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
         try {
-            $items = $this->categoryService->find($category->id);
+            $item = $this->categoryService->find($id);
+            return view('admin.categories.edit',compact('item'));
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
         }
@@ -74,19 +98,36 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(UpdateCategoryRequest $request, $id)
     {
-        //
+        try {
+            $category = Category::find($id);
+            $category->name = $request->name;
+            $category->description = $request->description;
+            $fieldName = 'image_url';
+            if ($request->hasFile($fieldName)) {
+                $get_img = $request->file($fieldName);
+                $path = 'storage/category/';
+                $new_name_img = rand(1,100).$get_img->getClientOriginalName();
+                $get_img->move($path,$new_name_img);
+                $category->image_url = $path.$new_name_img;
+            }
+            $category->save();
+            // alert()->success('Success created');
+            return redirect()->route('categories.index');
+        } catch (\Exception $e) {
+            Log::error('Bug occurred: ' . $e->getMessage());
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
         try {
-            // $this->categoryService->destroy($category->id);
-            echo 'Delete success';
+            $this->categoryService->destroy($id);
+            return back();
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
         }

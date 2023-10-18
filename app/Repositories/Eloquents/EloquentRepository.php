@@ -17,7 +17,7 @@ abstract class EloquentRepository implements RepositoryInterface{
         $this->model = app()->make($this->getModel());
     }
 
-    function all($request){
+    function all($request  = []){
         $result = $this->model->all();
         return $result;
     }
