@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,9 +14,17 @@ use App\Http\Controllers\CategoryController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// Login & Logout
+Route::get('/login',[AuthController::class,'login'])->name('auth.login');
+Route::get('/logout',[AuthController::class,'logout'])->name('auth.logout');
+Route::post('/checkLogin',[AuthController::class,'checkLogin'])->name('auth.checkLogin');
+Route::get('/register',[AuthController::class,'register'])->name('auth.register');
+Route::post('/checkRegister',[AuthController::class,'checkRegister'])->name('auth.checkRegister');
+
+// Admin
 Route::get('/', function () {
     return view('admin.feature.index');
 });
-
-Route::resource('categories',CategoryController::class);
-
+Route::middleware(['auth','preventhistory'])->group(function(){
+    Route::resource('categories',CategoryController::class);
+});

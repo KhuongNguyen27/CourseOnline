@@ -9,6 +9,11 @@ class Category extends Model
 {
     use HasFactory;
     protected $table = 'categories';
+    protected $fillable = [
+        'name',
+        'description',
+        'image_url',
+    ];
     public function course()
     {
         return $this->hasOne(Course::class,'category_id','id');

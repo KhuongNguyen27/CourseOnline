@@ -20,10 +20,12 @@
         <div class="aside-menu overflow-hidden">
             <nav id="stacked-menu" class="stacked-menu">
                 <ul class="menu">
+                    @if(Auth::user()->hasPermission('Category_viewAny'))
                     <li class="menu-item has-active">
-                        <a href="{{ route('categories.index') }}" class="menu-link"><span class="menu-icon bx bx-category"></span> <span
-                                class="menu-text">Category</span></a>
+                        <a href="{{ route('categories.index') }}" class="menu-link"><span
+                                class="menu-icon bx bx-category"></span> <span class="menu-text">Danh mục</span></a>
                     </li>
+                    @endif
                     <li class="menu-item has-child">
                         <a href="#" class="menu-link"><span class="menu-icon far fa-file"></span> <span
                                 class="menu-text">App Pages</span> <span class="badge badge-warning">New</span></a>

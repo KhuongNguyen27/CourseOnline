@@ -4,17 +4,17 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active">
-                <a href="{{ route('categories.index') }}"><i class='bx bx-chevrons-left mr-2'></i>Home</a>
+                <a href="{{ route('categories.index') }}"><i class='bx bx-chevrons-left mr-2'></i>Trang Chủ</a>
             </li>
         </ol>
     </nav>
     <!-- <button type="button" class="btn btn-success btn-floated"><span class="fa fa-plus"></span></button> -->
     <div class="d-md-flex align-items-md-start">
-        <h1 class="page-title mr-sm-auto">Category</h1>
+        <h1 class="page-title mr-sm-auto">Danh mục khóa học</h1>
         <div class="btn-toolbar">
             <a href="{{ route('categories.create') }}" class="btn btn-primary mr-2">
                 <i class='bx bx-add-to-queue'></i>
-                <span class="ml-1">Create</span>
+                <span class="ml-1">Tạo mới</span>
             </a>
             <!-- <a href="#" class="btn btn-primary">
                 <i class='bx bx-vertical-bottom'></i>
@@ -28,7 +28,7 @@
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active " href="#">All</a>
+                    <a class="nav-link active " href="#">Tất cả</a>
                 </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="#">Trash</a>
@@ -42,7 +42,7 @@
                         <div class="input-group input-group-alt">
                             <div class="input-group-prepend">
                                 <button class="btn btn-secondary" type="button" data-toggle="modal"
-                                    data-target="#modalFilterColumns">Search advance</button>
+                                    data-target="#modalFilterColumns">Tìm kiếm nâng cao</button>
                             </div>
                             <div class="input-group has-clearable">
                                 <button type="button" class="close trigger-submit trigger-submit-delay"
@@ -56,53 +56,55 @@
                             </div>
                             <div class="input-group-append">
                                 <button class="btn btn-secondary" data-toggle="modal" data-target="#modalSaveSearch"
-                                    type="button">Save Filter</button>
+                                    type="button">Lưu bộ lọc</button>
                             </div>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th> # </th>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($items as $category)
-                                    <tr>
-                                        <td class="align-middle">{{ $category->id }}</td>
-                                        <td class="image-container w-25">
-                                            <img class='img-fluid rounded img-thumbnail'
-                                                src="{{ $category->image_url }}" alt="" srcset="">
-                                        </td>
-                                        <td class="align-middle">{{ $category->name }}</td>
-                                        <td class="align-middle">{{ $category->description }}</td>
-                                        <td class='d-flex justify-content-center align-items-center'>
-                                            <span class="sr-only">Edit</span><a
-                                                href="{{ route('categories.edit', $category->id) }}"
-                                                class="btn btn-sm btn-icon btn-secondary"><i
-                                                    class='bx bx-edit-alt'></i><span class="sr-only">Remove</span></a>
-                                            <form style="display:inline" method="post"
-                                                action="{{ route('categories.destroy',$category->id) }}">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-sm btn-icon btn-secondary" onclick="return confirm('Are you sure?')">
-                                                    <i class='bx bx-trash'></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <div style="float:right">
-                                {{ $items->appends(request()->query())->links('pagination::bootstrap-4') }}
-                            </div>
+                    </form> 
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> # </th>
+                                    <th>Danh mục</th>
+                                    <th>Mô tả</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($items as $category)
+                                <tr>
+                                    <td class="align-middle">{{ $category->id }}</td>
+                                    <td>
+                                        <a href="#" class="tile tile-img mr-1">
+                                            <img class="img-fluid" src="{{ asset($category->image_url) }}" alt="">
+                                        </a>
+                                        {{ $category->name }}
+                                    </td>
+                                    <td class="align-middle">{{ $category->description }}</td>
+                                    <td class='d-flex justify-content-center align-items-center'>
+                                        <span class="sr-only">Edit</span>
+                                        <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-sm btn-icon btn-secondary">
+                                            <i class='bx bx-edit-alt'></i>
+                                            <span class="sr-only">Remove</span>
+                                        </a>
+                                        <form style="display:inline" method="post"
+                                            action="{{ route('categories.destroy',$category->id) }}">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-sm btn-icon btn-secondary"
+                                                onclick="return confirm('Are you sure?')">
+                                                <i class='bx bx-trash'></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div style="float:right">
+                            {{ $items->appends(request()->query())->links('pagination::bootstrap-4') }}
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
