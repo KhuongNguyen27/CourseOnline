@@ -27,6 +27,10 @@
 <script src="{{ asset ('assets/javascript/theme.min.js') }}"></script> <!-- END THEME JS -->
 <script src="{{ asset ('assets/javascript/pages/dashboard-demo.js') }}"></script> <!-- END PAGE LEVEL JS -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116692175-1"></script>
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+<script>
+CKEDITOR.replace('description');
+</script>
 <script>
 window.dataLayer = window.dataLayer || [];
 

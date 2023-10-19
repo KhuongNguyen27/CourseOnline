@@ -17,7 +17,7 @@ class CategoryService implements CategoryServiceInterface
         return $this->categoryRepository->paginate($limit,$request);
     }
 
-    function all($request){
+    function all($request=null){
         return $this->categoryRepository->all($request);
     }
 

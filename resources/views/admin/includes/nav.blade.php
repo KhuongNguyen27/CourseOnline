@@ -4,8 +4,8 @@
             <button class="hamburger hamburger-squeeze mr-2" type="button" data-toggle="aside-menu"
                 aria-label="toggle aside menu"><span class="hamburger-box"><span
                         class="hamburger-inner"></span></span></button>
-            <a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    height="28" viewbox="0 0 351 100">
+            <a href="{{ route('categories.index') }}"><svg xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" height="28" viewbox="0 0 351 100">
                     <defs>
                         <path id="a"
                             d="M156.538 45.644v1.04a6.347 6.347 0 0 1-1.847 3.98L127.708 77.67a6.338 6.338 0 0 1-3.862 1.839h-1.272a6.34 6.34 0 0 1-3.862-1.839L91.728 50.664a6.353 6.353 0 0 1 0-9l9.11-9.117-2.136-2.138a3.171 3.171 0 0 0-4.498 0L80.711 43.913a3.177 3.177 0 0 0-.043 4.453l-.002.003.048.047 24.733 24.754-4.497 4.5a6.339 6.339 0 0 1-3.863 1.84h-1.27a6.337 6.337 0 0 1-3.863-1.84L64.971 50.665a6.353 6.353 0 0 1 0-9l26.983-27.008a6.336 6.336 0 0 1 4.498-1.869c1.626 0 3.252.622 4.498 1.87l26.986 27.006a6.353 6.353 0 0 1 0 9l-9.11 9.117 2.136 2.138a3.171 3.171 0 0 0 4.498 0l13.49-13.504a3.177 3.177 0 0 0 .046-4.453l.002-.002-.047-.048-24.737-24.754 4.498-4.5a6.344 6.344 0 0 1 8.996 0l26.983 27.006a6.347 6.347 0 0 1 1.847 3.98zm-46.707-4.095l-2.362 2.364a3.178 3.178 0 0 0 0 4.501l2.362 2.364 2.361-2.364a3.178 3.178 0 0 0 0-4.501l-2.361-2.364z">
@@ -100,186 +100,25 @@
                 </form>
             </div>
             <div class="top-bar-item top-bar-item-right px-0 d-none d-sm-flex">
-                <ul class="header-nav nav">
-                    <li class="nav-item dropdown header-nav-dropdown has-notified">
-                        <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"><span class="oi oi-pulse"></span></a>
-                        <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">
-                            <div class="dropdown-arrow"></div>
-                            <h6 class="dropdown-header stop-propagation">
-                                <span>Activities <span class="badge">(2)</span></span>
-                            </h6>
-                            <div class="dropdown-scroll perfect-scrollbar">
-                                <a href="#" class="dropdown-item unread">
-                                    <div class="user-avatar">
-                                        <img src="assets/images/avatars/uifaces15.jpg" alt="">
-                                    </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="text"> Jeffrey Wells created a schedule </p><span class="date">Just
-                                            now</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item unread">
-                                    <div class="user-avatar">
-                                        <img src="assets/images/avatars/uifaces16.jpg" alt="">
-                                    </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="text"> Anna Vargas logged a chat </p><span class="date">3 hours
-                                            ago</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="user-avatar">
-                                        <img src="assets/images/avatars/uifaces17.jpg" alt="">
-                                    </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="text"> Sara Carr invited to Stilearn Admin </p><span class="date">5
-                                            hours ago</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="user-avatar">
-                                        <img src="assets/images/avatars/uifaces18.jpg" alt="">
-                                    </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="text"> Arthur Carroll updated a project </p><span class="date">1 day
-                                            ago</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="user-avatar">
-                                        <img src="assets/images/avatars/uifaces19.jpg" alt="">
-                                    </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="text"> Hannah Romero created a task </p><span class="date">1 day
-                                            ago</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="user-avatar">
-                                        <img src="assets/images/avatars/uifaces20.jpg" alt="">
-                                    </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="text"> Angela Peterson assign a task to you </p><span class="date">2
-                                            days ago</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="user-avatar">
-                                        <img src="assets/images/avatars/uifaces21.jpg" alt="">
-                                    </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="text"> Shirley Mason and 3 others followed you </p><span
-                                            class="date">2 days ago</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <a href="user-activities.html" class="dropdown-footer">All activities <i
-                                    class="fas fa-fw fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown header-nav-dropdown has-notified">
-                        <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"><span class="oi oi-envelope-open"></span></a>
-                        <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">
-                            <div class="dropdown-arrow"></div>
-                            <h6 class="dropdown-header stop-propagation">
-                                <span>Messages</span> <a href="#">Mark all as read</a>
-                            </h6>
-                            <div class="dropdown-scroll perfect-scrollbar">
-                                <a href="#" class="dropdown-item unread">
-                                    <div class="user-avatar">
-                                        <img src="assets/images/avatars/team1.jpg" alt="">
-                                    </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="subject"> Stilearning </p>
-                                        <p class="text text-truncate"> Invitation: Joe's Dinner @ Fri Aug 22 </p><span
-                                            class="date">2 hours ago</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="user-avatar">
-                                        <img src="assets/images/avatars/team3.png" alt="">
-                                    </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="subject"> Openlane </p>
-                                        <p class="text text-truncate"> Final reminder: Upgrade to Pro </p><span
-                                            class="date">23 hours ago</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="tile tile-circle bg-green"> GZ </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="subject"> Gogo Zoom </p>
-                                        <p class="text text-truncate"> Live healthy with this wireless sensor. </p><span
-                                            class="date">1 day ago</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="tile tile-circle bg-teal"> GD </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="subject"> Gold Dex </p>
-                                        <p class="text text-truncate"> Invitation: Design Review @ Mon Jul 7 </p><span
-                                            class="date">1 day ago</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="user-avatar">
-                                        <img src="assets/images/avatars/team2.png" alt="">
-                                    </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="subject"> Creative Division </p>
-                                        <p class="text text-truncate"> Need some feedback on this please </p><span
-                                            class="date">2 days ago</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="tile tile-circle bg-pink"> LD </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="subject"> Lab Drill </p>
-                                        <p class="text text-truncate"> Our UX exercise is ready </p><span class="date">6
-                                            days ago</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <a href="page-messages.html" class="dropdown-footer">All messages <i
-                                    class="fas fa-fw fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown header-nav-dropdown">
-                        <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"><span class="oi oi-grid-three-up"></span></a>
-                        <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">
-                            <div class="dropdown-arrow"></div>
-                            <div class="dropdown-sheets">
-
-                                <div class="dropdown-sheet-item">
-                                    <a href="#" class="tile-wrapper"><span class="tile tile-lg bg-cyan"><i
-                                                class="oi oi-document"></i></span> <span
-                                            class="tile-peek">Files</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
                 <div class="dropdown d-none d-md-flex">
                     <button class="btn-account" type="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><span class="user-avatar user-avatar-md"><img
-                                src="assets/images/avatars/profile.jpg" alt=""></span> <span
-                            class="account-summary pr-lg-4 d-none d-lg-block"><span class="account-name">Beni
-                                Arisandi</span> <span class="account-description">Marketing
-                                Manager</span></span></button>
+                        aria-expanded="false">
+                        <span class="user-avatar user-avatar-md">
+                            <img src="{{ asset(Auth::user()->avatar) }}" alt="">
+                        </span>
+                        <span class="account-summary pr-lg-4 d-none d-lg-block"><span class="account-name">{{ Auth::user()->name }}</span>
+                            <span class="account-description">{{ Auth::user()->group->name }}</span>
+                    </button>
                     <div class="dropdown-menu">
                         <div class="dropdown-arrow d-lg-none" x-arrow=""></div>
                         <div class="dropdown-arrow ml-3 d-none d-lg-block"></div>
-                        <h6 class="dropdown-header d-none d-md-block d-lg-none"> Beni Arisandi </h6><a
-                            class="dropdown-item" href="user-profile.html"><span
-                                class="dropdown-icon oi oi-person"></span> Profile</a> <a class="dropdown-item"
-                            href="auth-signin-v1.html"><span class="dropdown-icon oi oi-account-logout"></span>
-                            Logout</a>
-                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Help Center</a> <a
-                            class="dropdown-item" href="#">Ask Forum</a> <a class="dropdown-item" href="#">Keyboard
-                            Shortcuts</a>
+                        <h6 class="dropdown-header d-none d-md-block d-lg-none">{{ Auth::user()->name }}</h6><a
+                            class="dropdown-item" href="#"><span class="dropdown-icon bx bx-user"></span> Trang cá nhân</a>
+                        <a class="dropdown-item" href="{{ route('auth.logout') }}"><span
+                                class="dropdown-icon bx bx-log-out"></span>
+                            Đăng xuất</a>
+                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Hỗ trợ</a> <a
+                            class="dropdown-item" href="#">Hỏi đáp</a> <a class="dropdown-item" href="#">Phím tắt</a>
                     </div>
                 </div>
             </div>

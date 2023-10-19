@@ -25,9 +25,12 @@ class CategoryController extends Controller
     public function index()
     {
         try {
+            $this->authorize('viewAny',Category::class);
             $items = $this->categoryService->paginate(5);
+            return view('admin.categories.index',compact('items'));
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
+            return back();
         }
     }
 
@@ -36,7 +39,13 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        try {
+            $this->authorize('create',Category::class);
+            return view('admin.categories.create');
+        } catch (\Exception $e) {
+            Log::error('Bug occurred: ' . $e->getMessage());
+            return back();
+        }
     }
 
     /**
@@ -44,49 +53,68 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        try{
+            $data = $request->except(['_token', '_method']);
+            $this->categoryService->store($data);
+            return redirect()->route('categories.index');
+        } catch (\Exception $e) {
+            // alert()->warning('Have problem, Please try again late!');
+            return back();
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show($id)
     {
         try {
-            $items = $this->categoryService->find($category->id);
+            $this->authorize('view',Category::class);
+            $items = $this->categoryService->find($id);
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
+            return back();
         }
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
         try {
-            $items = $this->categoryService->find($category->id);
+            $this->authorize('update',Category::class);
+            $item = $this->categoryService->find($id);
+            return view('admin.categories.edit',compact('item'));
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
+            return back();
         }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(UpdateCategoryRequest $request, $id)
     {
-        //
+        try {
+            $data = $request->except(['_token', '_method']);
+            $this->categoryService->update($data, $id);
+            return redirect()->route('categories.index');
+        } catch (\Exception $e) {
+            Log::error('Bug occurred: ' . $e->getMessage());
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
         try {
-            // $this->categoryService->destroy($category->id);
-            echo 'Delete success';
+            $this->authorize('delete',Category::class);
+            $this->categoryService->destroy($id);
+            return back();
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
         }

@@ -20,10 +20,12 @@
         <div class="aside-menu overflow-hidden">
             <nav id="stacked-menu" class="stacked-menu">
                 <ul class="menu">
+                    @if(Auth::user()->hasPermission('Category_viewAny'))
                     <li class="menu-item has-active">
-                        <a href="index.html" class="menu-link"><span class="menu-icon fas fa-home"></span> <span
-                                class="menu-text">Dashboard</span></a>
+                        <a href="{{ route('categories.index') }}" class="menu-link"><span
+                                class="menu-icon bx bx-category"></span> <span class="menu-text">Danh mục</span></a>
                     </li>
+                    @endif
                     <li class="menu-item has-child">
                         <a href="#" class="menu-link"><span class="menu-icon far fa-file"></span> <span
                                 class="menu-text">App Pages</span> <span class="badge badge-warning">New</span></a>
@@ -218,7 +220,7 @@
         </div>
         <footer class="aside-footer border-top p-2">
             <button class="btn btn-light btn-block text-primary" data-toggle="skin"><span
-                    class="d-compact-menu-none">Night mode</span> <i class="fas fa-moon ml-1"></i></button>
+                    class="d-compact-menu-none">Dark Mode</span> <i class="bx bx-moon icon moon"></i></button>
         </footer>
     </div>
 </aside>
