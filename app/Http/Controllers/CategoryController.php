@@ -25,10 +25,12 @@ class CategoryController extends Controller
     public function index()
     {
         try {
+            $this->authorize('viewAny',Category::class);
             $items = $this->categoryService->paginate(5);
             return view('admin.categories.index',compact('items'));
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
+            return back();
         }
     }
 
@@ -38,9 +40,11 @@ class CategoryController extends Controller
     public function create()
     {
         try {
+            $this->authorize('create',Category::class);
             return view('admin.categories.create');
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
+            return back();
         }
     }
 
@@ -50,19 +54,8 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request)
     {
         try{
-            $category = new Category();
-            $category->name = $request->name;
-            $category->description = $request->description;
-            $fieldName = 'image_url';
-            if ($request->hasFile($fieldName)) {
-                $get_img = $request->file($fieldName);
-                $path = 'storage/category/';
-                $new_name_img = rand(1,100).$get_img->getClientOriginalName();
-                $get_img->move($path,$new_name_img);
-                $category->image_url = $path.$new_name_img;
-            }
-            $category->save();
-            // alert()->success('Success created');
+            $data = $request->except(['_token', '_method']);
+            $this->categoryService->store($data);
             return redirect()->route('categories.index');
         } catch (\Exception $e) {
             // alert()->warning('Have problem, Please try again late!');
@@ -76,9 +69,11 @@ class CategoryController extends Controller
     public function show($id)
     {
         try {
+            $this->authorize('view',Category::class);
             $items = $this->categoryService->find($id);
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
+            return back();
         }
     }
 
@@ -88,10 +83,12 @@ class CategoryController extends Controller
     public function edit($id)
     {
         try {
+            $this->authorize('update',Category::class);
             $item = $this->categoryService->find($id);
             return view('admin.categories.edit',compact('item'));
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
+            return back();
         }
     }
 
@@ -101,19 +98,8 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, $id)
     {
         try {
-            $category = Category::find($id);
-            $category->name = $request->name;
-            $category->description = $request->description;
-            $fieldName = 'image_url';
-            if ($request->hasFile($fieldName)) {
-                $get_img = $request->file($fieldName);
-                $path = 'storage/category/';
-                $new_name_img = rand(1,100).$get_img->getClientOriginalName();
-                $get_img->move($path,$new_name_img);
-                $category->image_url = $path.$new_name_img;
-            }
-            $category->save();
-            // alert()->success('Success created');
+            $data = $request->except(['_token', '_method']);
+            $this->categoryService->update($data, $id);
             return redirect()->route('categories.index');
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
@@ -126,6 +112,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         try {
+            $this->authorize('delete',Category::class);
             $this->categoryService->destroy($id);
             return back();
         } catch (\Exception $e) {

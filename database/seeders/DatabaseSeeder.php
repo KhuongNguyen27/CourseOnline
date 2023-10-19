@@ -6,9 +6,11 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\GroupSeeder;
 use Database\Seeders\LevelSeeder;
+use Database\Seeders\RoleSeeder;
+use Database\Seeders\GroupRoleSeeder;
 use App\Models\User;
 use App\Models\Course;
-use App\Models\User_course;
+use App\Models\UserCourse;
 use App\Models\Order;
 use App\Models\Category;
 use App\Models\Section;
@@ -23,6 +25,8 @@ class DatabaseSeeder extends Seeder
         
         $this->call(GroupSeeder::class);
         $this->call(LevelSeeder::class);
+        $this->call(RoleSeeder::class);
+        $this->call(GroupRoleSeeder::class);
         Category::factory(10)->create();    
         User::factory(10)->create();
         Course::factory(10)->create();
