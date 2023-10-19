@@ -9,9 +9,17 @@ use Illuminate\Support\Facades\Schema;
 use App\Services\Interfaces\CategoryServiceInterface;
 use App\Services\CategoryService;
 
+/* levelService */
+use App\Services\Interfaces\LevelServiceInterface;
+use App\Services\LevelService;
+
 /* CategoryRepository */
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Eloquents\CategoryRepository;
+
+/* LevelRepository */
+use App\Repositories\Interfaces\LevelRepositoryInterface;
+use App\Repositories\Eloquents\LevelRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,13 +34,17 @@ class AppServiceProvider extends ServiceProvider
             Tắt dòng binding là thấy tai hại liền :)
         */
         /* Binding Services*/
+        /* Category */
         $this->app->singleton(CategoryServiceInterface::class, CategoryService::class);
-
+        /* Lever */
+        $this->app->singleton(LevelServiceInterface::class, LevelService::class);
 
         
         /* Binding Repositories*/
+        /* Category */
         $this->app->singleton(CategoryRepositoryInterface::class, CategoryRepository::class);
-
+        /* Lever */
+        $this->app->singleton(LevelRepositoryInterface::class, LevelRepository::class);
     }
 
     /**

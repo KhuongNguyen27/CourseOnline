@@ -31,11 +31,11 @@ abstract class EloquentRepository implements RepositoryInterface{
     }
 
     function store($data){
-        return $this->model->store($data);
+        return $this->model->create($data);
     }
     
     function update($data, $id){
-        return $this->model->update($data, $id);
+        return $this->model->findOrFail($id)->update($data);
     }
 
     function destroy($id){

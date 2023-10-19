@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LevelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,4 +18,5 @@ Route::get('/', function () {
 });
 
 Route::resource('categories',CategoryController::class);
+Route::resource('levels',LevelController::class);
 

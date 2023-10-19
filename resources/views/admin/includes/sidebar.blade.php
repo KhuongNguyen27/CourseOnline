@@ -209,47 +209,9 @@
                         </ul>
                     </li>
                     <li class="menu-item has-child">
-                        <a href="#" class="menu-link"><span class="menu-icon oi oi-list-rich"></span> <span
-                                class="menu-text">Level Menu</span></a> <!-- child menu -->
-                        <ul class="menu">
-                            <li class="menu-item">
-                                <a href="#" class="menu-link">Menu Item</a>
-                            </li>
-                            <li class="menu-item has-child">
-                                <a href="#" class="menu-link">Menu Item</a>
-                                <ul class="menu">
-                                    <li class="menu-item">
-                                        <a href="#" class="menu-link">Child Item</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="#" class="menu-link">Child Item</a>
-                                    </li>
-                                    <li class="menu-item has-child">
-                                        <a href="#" class="menu-link">Child Item</a>
-                                        <ul class="menu">
-                                            <li class="menu-item">
-                                                <a href="#" class="menu-link">Grand Child Item</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="#" class="menu-link">Grand Child Item</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="#" class="menu-link">Grand Child Item</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="#" class="menu-link">Grand Child Item</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="#" class="menu-link">Child Item</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#" class="menu-link">Menu Item</a>
-                            </li>
-                        </ul>
+                        <a href="{{ route('levels.index') }}" class="menu-link"><span class="menu-icon oi oi-list-rich"></span> <span
+                                class="menu-text">Trình Độ</span></a> <!-- child menu -->
+                       
                     </li>
                 </ul>
             </nav>

@@ -8,7 +8,7 @@ use Database\Seeders\GroupSeeder;
 use Database\Seeders\LevelSeeder;
 use App\Models\User;
 use App\Models\Course;
-use App\Models\User_course;
+use App\Models\UserCourse;
 use App\Models\Order;
 use App\Models\Category;
 use App\Models\Section;
@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         Category::factory(10)->create();    
         User::factory(10)->create();
         Course::factory(10)->create();
-        User_course::factory(10)->create();
+        UserCourse::factory(10)->create();
         Order::factory(10)->create();
         Section::factory(10)->create();
         Lession::factory(10)->create();
