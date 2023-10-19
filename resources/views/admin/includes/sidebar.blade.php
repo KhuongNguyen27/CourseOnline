@@ -211,8 +211,9 @@
                         </ul>
                     </li>
                     <li class="menu-item has-child">
-                        <a href="{{ route('levels.index') }}" class="menu-link"><span class="menu-icon oi oi-list-rich"></span> <span
-                                class="menu-text">Trình Độ</span></a> <!-- child menu -->
+                        <a href="{{ route('levels.index') }}" class="menu-link"> <i class='bx bx-line-chart'></i></span> <span
+                        class="menu-text">Trình Độ</span></a> <!-- child menu -->
+                       
                        
                     </li>
                 </ul>

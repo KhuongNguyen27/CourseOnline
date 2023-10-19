@@ -27,9 +27,8 @@ Route::get('/', function () {
     return view('admin.feature.index');
 });
 
-Route::resource('levels',LevelController::class);
 
-=======
 Route::middleware(['auth','preventhistory'])->group(function(){
     Route::resource('categories',CategoryController::class);
+    Route::resource('levels',LevelController::class);
 });

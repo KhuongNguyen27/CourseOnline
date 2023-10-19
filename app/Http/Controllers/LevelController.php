@@ -20,10 +20,11 @@ function __construct(LevelServiceInterface $levelService)
    $this->levelService = $levelService;
 }
      
-    public function index()
+    public function index(Request $request)
     {   
         try {
-            $items = $this->levelService->paginate(5);
+            $this->authorize('viewAny',Level::class);
+            $items = $this->levelService->all($request);
             return view('admin.levels.index',compact(['items']));
             // dd($items);
         } catch (\Exception $e) {
@@ -46,6 +47,7 @@ function __construct(LevelServiceInterface $levelService)
     public function store(StoreLevelRequest $request)
     {
         try {
+            $this->authorize('create',Level::class);
             $data = $request->except(['_token', '_method']);
             $this->levelService->store($data);
             
@@ -75,6 +77,8 @@ function __construct(LevelServiceInterface $levelService)
         try {
             
             // Lấy dữ liệu của cấp độ và truyền vào tệp Blade
+        $this->authorize('update',Level::class);
+
             $item = $this->levelService->find($level->id);
         return view('admin.levels.edit', compact('level', 'item'));
     } catch (\Exception $e) {
@@ -101,6 +105,7 @@ function __construct(LevelServiceInterface $levelService)
     public function destroy( $id)
     {
         try {
+            $this->authorize('delete',Level::class);
             $this->levelService->destroy($id);
             return back();
         } catch (\Exception $e) {

@@ -16,7 +16,7 @@ class LevelService implements LevelServiceInterface{
         return $this->levelRepository->paginate($limit,$request);
     }
 
-    function all($request){
+    function all($request = []){
         return $this->levelRepository->all($request);
     }
 
