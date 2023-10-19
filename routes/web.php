@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LevelController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 /*
@@ -25,6 +26,10 @@ Route::post('/checkRegister',[AuthController::class,'checkRegister'])->name('aut
 Route::get('/', function () {
     return view('admin.feature.index');
 });
+
+Route::resource('levels',LevelController::class);
+
+=======
 Route::middleware(['auth','preventhistory'])->group(function(){
     Route::resource('categories',CategoryController::class);
 });
