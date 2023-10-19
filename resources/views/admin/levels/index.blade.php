@@ -28,40 +28,41 @@
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active " href="#">Tất Cả</a>
+                    <a class="nav-link active " href="{{ route('levels.index') }}">Tất Cả</a>
                 </li>
             </ul>
         </div>
         <div class="card-body">
             <div class="row mb-2">
                 <div class="col">
-                    <form action="" method="GET" id="form-search">
-                        <div class="input-group input-group-alt">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modalFilterColumns">Tìm kiếm nâng cao</button>
-                            </div>
-                            <div class="input-group has-clearable">
-                                <button type="button" class="close trigger-submit trigger-submit-delay" aria-label="Close">
-                                    <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
-                                </button>
-                                <div class="input-group-prepend trigger-submit">
-                                    <span class="input-group-text"><span class="bx bx-search-alt-2"></span></span>
+                <form action="" method="GET" id="form-search">
+                            <div class="row">
+                            <div class="col">
+                                    <input name="id" class="form-control" type="text" placeholder=" Id..."
+                                        value="" />
                                 </div>
-                                <input type="text" class="form-control" name="query" value="" placeholder="Tìm....">
+                                <div class="col">
+                                    <input name="searchname" class="form-control" type="text" placeholder=" tên trình độ..."
+                                        value="" />
+                                </div>
+                                <div class="col">
+                                    <input name="searchlevel" class="form-control" type="text" placeholder=" trình độ"
+                                        value="" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <button class="btn btn-secondary" data-toggle="modal" data-target="#modalSaveSearch"
+                                        type="submit">Tìm Kiếm</button>
+                                </div>
                             </div>
-                            <div class="input-group-append">
-                                <button class="btn btn-secondary" data-toggle="modal" data-target="#modalSaveSearch" type="button">Lưu bộ lọc</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th> ID</th>
-                                    <th>Name</th>
-                                    <th>Level</th>
-                                    <th>Action</th>
+                                    <th >STT</th>
+                                    <th >Tên Trình độ</th>
+                                    <th >Trình Độ</th>
+                                    <th class="text-center">Hành Động</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -71,10 +72,12 @@
                                     <td class="align-middle">{{ $level->name }}</td>
                                     <td class="align-middle">{{ $level->level }}</td>
                                     <td class='d-flex justify-content-center align-items-center'>
-                                        <span class="sr-only">Edit</span><a href="{{ route('levels.edit', $level->id) }}" class="btn btn-sm btn-icon btn-secondary"><i class='bx bx-edit-alt'></i><span class="sr-only">Remove</span></a>
-                                        <form style="display:inline" method="post" action="{{ route('levels.destroy', $level->id) }} ">
+                                        <span class="sr-only">Edit</span><a href="{{ route('levels.edit', $level->id) }}" 
+                                        class="btn btn-sm btn-icon btn-secondary"><i class='bx bx-edit-alt'></i><span class="sr-only">Remove</span>
+                                    </a>
+                                        <form style="display:inline" method="POST" action="{{ route('levels.destroy', $level->id) }}">
                                             @csrf
-                                            @method('delete')
+                                            @method('DELETE')
                                             <button class="btn btn-sm btn-icon btn-secondary">
                                                 <i class='bx bx-trash'></i>
                                             </button>
