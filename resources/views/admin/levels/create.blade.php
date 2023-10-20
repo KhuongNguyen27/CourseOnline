@@ -18,16 +18,16 @@
             <div class="card-body">
                 <legend>Thông Tin</legend>
                 <div class="form-group">
-                    <label for="tf1">Tên Trình Độ<abbr name="Trường bắt buộc">*</abbr></label> <input name="name" type="text" class="form-control" id="" placeholder="Insert name level" value="{{ old('name') }}">
+                    <label for="tf1">Tên Trình Độ<abbr name="Trường bắt buộc">*</abbr></label> <input name="name" type="text" class="form-control" id="" placeholder="Nhập tên cấp độ" value="{{ old('name') }}">
                     <small id="" class="form-text text-muted"></small>
                     @error('name')
-                    <p style="color:red">{{ $message }}</p>
+                    <p style="color:red">Trường tên trình độ bắt buộc nhập</p>
                     @enderror
                     <div class="form-group">
-                    <label for="tf1">Trình Độ<abbr name="Trường bắt buộc">*</abbr></label> <input name="level" type="text" class="form-control" id="" placeholder="Insert level" value="{{ old('name') }}">
+                    <label for="tf1">Trình Độ<abbr name="Trường bắt buộc">*</abbr></label> <input name="level" type="text" class="form-control" id="" placeholder="Nhập cấp độ" value="{{ old('name') }}">
                     <small id="" class="form-text text-muted"></small>
                     @error('level')
-                    <p style="color:red">{{ $message }}</p>
+                    <p style="color:red">Trường Trình độ bắt buộc nhập </p>
                     @enderror
                 </div>
                
