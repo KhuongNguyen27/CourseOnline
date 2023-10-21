@@ -9,6 +9,22 @@ class LevelRepository extends EloquentRepository implements LevelRepositoryInter
     function getModel(){
         return Level::class;
     }
+    public function all($request = null)
+    {
+        $query = $this->model->query();
+    
+        if ($request->searchname) {
+            $query->where('name', 'like', '%' . $request->searchname . '%');
+        }
+        if ($request->searchlevel) {
+            $query->orWhere('level', 'like', '%' . $request->searchlevel . '%');
+        }
+        if ($request->id) {
+            $query->orWhere('id', $request->id);
+        }
+    
+        return $query->orderBy('id', 'ASC')->paginate(5);
+    }
     public function store($data)
     {
 

@@ -23,7 +23,6 @@ Route::get('/register',[AuthController::class,'register'])->name('auth.register'
 Route::post('/checkRegister',[AuthController::class,'checkRegister'])->name('auth.checkRegister');
 
 // Admin
-
 Route::middleware(['auth','preventhistory'])->group(function(){
     Route::resource('categories',CategoryController::class);
     Route::resource('levels',LevelController::class);
