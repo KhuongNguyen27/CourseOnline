@@ -16,20 +16,15 @@ use App\Http\Controllers\AuthController;
 |
 */
 // Login & Logout
-Route::get('/login',[AuthController::class,'login'])->name('auth.login');
+Route::get('/',[AuthController::class,'login'])->name('auth.login');
 Route::get('/logout',[AuthController::class,'logout'])->name('auth.logout');
 Route::post('/checkLogin',[AuthController::class,'checkLogin'])->name('auth.checkLogin');
 Route::get('/register',[AuthController::class,'register'])->name('auth.register');
 Route::post('/checkRegister',[AuthController::class,'checkRegister'])->name('auth.checkRegister');
 
 // Admin
-Route::get('/', function () {
-    return view('admin.feature.index');
-});
 
-Route::resource('levels',LevelController::class);
-
-=======
 Route::middleware(['auth','preventhistory'])->group(function(){
     Route::resource('categories',CategoryController::class);
+    Route::resource('levels',LevelController::class);
 });
