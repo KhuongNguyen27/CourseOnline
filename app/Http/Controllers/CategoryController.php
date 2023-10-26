@@ -22,15 +22,15 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         try {
             $this->authorize('viewAny',Category::class);
-            $items = $this->categoryService->paginate(5);
+            $items = $this->categoryService->all($request);
             return view('admin.categories.index',compact('items'));
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
-            return back();
+            return back()->with('error','Đã xảy ra lỗi. Vui lòng thử lại sau');
         }
     }
 
@@ -44,7 +44,7 @@ class CategoryController extends Controller
             return view('admin.categories.create');
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
-            return back();
+            return back()->with('error','Đã xảy ra lỗi. Vui lòng thử lại sau');
         }
     }
 
@@ -56,10 +56,10 @@ class CategoryController extends Controller
         try{
             $data = $request->except(['_token', '_method']);
             $this->categoryService->store($data);
-            return redirect()->route('categories.index');
+            return redirect()->route('categories.index')->with('success','Thêm danh mục thành công');
         } catch (\Exception $e) {
             // alert()->warning('Have problem, Please try again late!');
-            return back();
+            return back()->with('error','Đã xảy ra lỗi. Vui lòng thử lại sau');
         }
     }
 
@@ -73,7 +73,7 @@ class CategoryController extends Controller
             $items = $this->categoryService->find($id);
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
-            return back();
+            return back()->with('error','Đã xảy ra lỗi. Vui lòng thử lại sau');
         }
     }
 
@@ -88,7 +88,7 @@ class CategoryController extends Controller
             return view('admin.categories.edit',compact('item'));
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
-            return back();
+            return back()->with('error','Đã xảy ra lỗi. Vui lòng thử lại sau');
         }
     }
 
@@ -100,7 +100,7 @@ class CategoryController extends Controller
         try {
             $data = $request->except(['_token', '_method']);
             $this->categoryService->update($data, $id);
-            return redirect()->route('categories.index');
+            return redirect()->route('categories.index')->with('success','Cập nhập danh mục thành công');
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
         }
@@ -114,9 +114,10 @@ class CategoryController extends Controller
         try {
             $this->authorize('delete',Category::class);
             $this->categoryService->destroy($id);
-            return back();
+            return back()->with('success','Xóa danh mục thành công');
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage());
+            return back()->with('error','Đã xảy ra lỗi. Vui lòng thử lại sau');
         }
     }
 }
