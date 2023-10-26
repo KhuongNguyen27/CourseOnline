@@ -12,6 +12,22 @@ class CategoryRepository extends EloquentRepository implements CategoryRepositor
         return Category::class;
     }
 
+    function all($request = []){
+        $query = $this->model->query();
+    
+        if ($request->searchname) {
+            $query->where('name', 'like', '%' . $request->searchname . '%');
+        }
+        if ($request->searchdescription) {
+            $query->orWhere('description', 'like', '%' . $request->searchlevel . '%');
+        }
+        if ($request->id) {
+            $query->orWhere('id', $request->id);
+        }
+    
+        return $query->orderBy('id', 'DESC')->paginate(5);
+    }
+
     function store($data){
         if (isset($data['image_url']) && $data['image_url']->isValid()) {
             $path = $data['image_url']->store('public/category');
