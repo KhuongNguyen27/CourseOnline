@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 /*
@@ -31,4 +32,5 @@ Route::get('/', function () {
 Route::middleware(['auth','preventhistory'])->group(function(){
     Route::resource('categories',CategoryController::class);
     Route::resource('levels',LevelController::class);
+    Route::resource('courses',CourseController::class);
 });
