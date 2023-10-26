@@ -2,8 +2,11 @@
     <div class="top-bar">
         <div class="top-bar-brand">
             <button class="hamburger hamburger-squeeze mr-2" type="button" data-toggle="aside-menu"
-                aria-label="toggle aside menu"><span class="hamburger-box"><span
-                        class="hamburger-inner"></span></span></button>
+                aria-label="toggle aside menu">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
             <a href="{{ route('categories.index') }}"><svg xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" height="28" viewbox="0 0 351 100">
                     <defs>
@@ -106,14 +109,16 @@
                         <span class="user-avatar user-avatar-md">
                             <img src="{{ asset(Auth::user()->avatar) }}" alt="">
                         </span>
-                        <span class="account-summary pr-lg-4 d-none d-lg-block"><span class="account-name">{{ Auth::user()->name }}</span>
+                        <span class="account-summary pr-lg-4 d-none d-lg-block"><span
+                                class="account-name">{{ Auth::user()->name }}</span>
                             <span class="account-description">{{ Auth::user()->group->name }}</span>
                     </button>
                     <div class="dropdown-menu">
                         <div class="dropdown-arrow d-lg-none" x-arrow=""></div>
                         <div class="dropdown-arrow ml-3 d-none d-lg-block"></div>
                         <h6 class="dropdown-header d-none d-md-block d-lg-none">{{ Auth::user()->name }}</h6><a
-                            class="dropdown-item" href="#"><span class="dropdown-icon bx bx-user"></span> Trang cá nhân</a>
+                            class="dropdown-item" href="#"><span class="dropdown-icon bx bx-user"></span> Trang cá
+                            nhân</a>
                         <a class="dropdown-item" href="{{ route('auth.logout') }}"><span
                                 class="dropdown-icon bx bx-log-out"></span>
                             Đăng xuất</a>

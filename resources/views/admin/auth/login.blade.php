@@ -20,17 +20,25 @@
                         </path>
                         <use class="fill-warning" xlink:href="#a"></use>
                     </g>
-                </svg> <span class="sr-only">Sign In</span>
+                </svg> <span class="sr-only">Đăng nhập</span>
             </h1>
-            <p> Don't have a account? <a href="auth-signup.html">Create One</a>
-            </p>
         </header>
         <form class="auth-form" method='post' action="{{ route('auth.checkLogin') }}">
             @csrf
+            @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+            @endif
+            @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+            @endif
             <div class="form-group">
                 <div class="form-label-group">
                     <input type="text" name='email' id="inputUser" class="form-control" placeholder="Username"
-                        autofocus=""> <label for="inputUser">Username</label>
+                        autofocus=""> <label for="inputUser">Tên đăng nhập</label>
                     @error('email')
                     <p style="color:red">{{ $message }}</p>
                     @enderror
@@ -39,25 +47,24 @@
             <div class="form-group">
                 <div class="form-label-group">
                     <input type="password" name='password' id="inputPassword" class="form-control"
-                        placeholder="Password"> <label for="inputPassword">Password</label>
+                        placeholder="Password"> <label for="inputPassword">Mật khẩu</label>
                 </div>
                 @error('password')
                 <p style="color:red">{{ $message }}</p>
                 @enderror
             </div>
             <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng nhập</button>
             </div>
             <div class="form-group text-center">
                 <div class="custom-control custom-control-inline custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="remember-me"> <label
-                        class="custom-control-label" for="remember-me">Keep me sign in</label>
+                        class="custom-control-label" for="remember-me">Ghi nhớ đăng nhập</label>
                 </div>
             </div>
             <!-- recovery links -->
             <div class="text-center pt-3">
-                <a href="auth-recovery-username.html" class="link">Forgot Username?</a> <span class="mx-2">·</span> <a
-                    href="auth-recovery-password.html" class="link">Forgot Password?</a>
+                <a href="auth-recovery-password.html" class="link">Quên mật khẩu?</a>
             </div><!-- /recovery links -->
         </form>
         @include('admin.includes.footer')

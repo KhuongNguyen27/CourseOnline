@@ -26,117 +26,18 @@
                                 class="menu-icon bx bx-category"></span> <span class="menu-text">Danh mục</span></a>
                     </li>
                     @endif
-                    <li class="menu-item has-child">
-                        <a href="#" class="menu-link"><span class="menu-icon far fa-file"></span> <span
-                                class="menu-text">App Pages</span> <span class="badge badge-warning">New</span></a>
-                        <ul class="menu">
-                            <li class="menu-item has-child">
-                                <a href="#" class="menu-link">Team</a>
-                                <ul class="menu">
-                                    <li class="menu-item">
-                                        <a href="page-team.html" class="menu-link">Overview</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="page-team-feeds.html" class="menu-link">Feeds</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="page-team-projects.html" class="menu-link">Projects</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="page-team-members.html" class="menu-link">Members</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item has-child">
-                                <a href="#" class="menu-link">Project</a>
-                                <ul class="menu">
-                                    <li class="menu-item">
-                                        <a href="page-project.html" class="menu-link">Overview</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="page-project-board.html" class="menu-link">Board</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="page-project-gantt.html" class="menu-link">Gantt View</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item">
-                                <a href="page-calendar.html" class="menu-link">Calendar</a>
-                            </li>
-                            <li class="menu-item has-child">
-                                <a href="#" class="menu-link">Invoices</a>
-                                <ul class="menu">
-                                    <li class="menu-item">
-                                        <a href="page-invoices.html" class="menu-link">List</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="page-invoice.html" class="menu-link">Details</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item">
-                                <a href="page-messages.html" class="menu-link">Messages</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="page-conversations.html" class="menu-link">Conversations</a>
-                            </li>
-                        </ul>
+                    @if(Auth::user()->hasPermission('User_viewAny'))
+                    <li class="menu-item has-active">
+                        <a href="{{ route('students.index') }}" class="menu-link"><span
+                                class="menu-icon bx bx-user"></span> <span class="menu-text">Học viên</span></a>
                     </li>
-                    <li class="menu-item has-child">
-                        <a href="#" class="menu-link"><span class="menu-icon oi oi-wrench"></span> <span
-                                class="menu-text">Auth</span></a>
-                        <ul class="menu">
-                            <li class="menu-item">
-                                <a href="auth-comingsoon-v1.html" class="menu-link">Coming Soon v1</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="auth-comingsoon-v2.html" class="menu-link">Coming Soon v2</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="auth-cookie-consent.html" class="menu-link">Cookie Consent</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="auth-empty-state.html" class="menu-link">Empty State</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="auth-error-v1.html" class="menu-link">Error Page v1</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="auth-error-v2.html" class="menu-link">Error Page v2</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="auth-error-v3.html" class="menu-link">Error Page v3</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="auth-maintenance.html" class="menu-link">Maintenance</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="auth-page-message.html" class="menu-link">Page Message</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="auth-session-timeout.html" class="menu-link">Session Timeout</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="auth-signin-v1.html" class="menu-link">Sign In v1</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="auth-signin-v2.html" class="menu-link">Sign In v2</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="auth-signup.html" class="menu-link">Sign Up</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="auth-recovery-username.html" class="menu-link">Recovery Username</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="auth-recovery-password.html" class="menu-link">Recovery Password</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="auth-lockscreen.html" class="menu-link">Screen Locked</a>
-                            </li>
-                        </ul>
+                    @endif
+                    @if(Auth::user()->hasPermission('User_viewAny'))
+                    <li class="menu-item has-active">
+                        <a href="{{ route('staffs.index') }}" class="menu-link"><span
+                                class="menu-icon bx bx-group"></span> <span class="menu-text">Nhân viên</span></a>
                     </li>
+                    @endif
                     <li class="menu-item has-child">
                         <a href="#" class="menu-link"><span class="menu-icon oi oi-person"></span> <span
                                 class="menu-text">User</span></a> <!-- child menu -->
@@ -211,10 +112,10 @@
                         </ul>
                     </li>
                     <li class="menu-item has-child">
-                        <a href="{{ route('levels.index') }}" class="menu-link"> <i class='bx bx-line-chart'></i></span> <span
-                        class="menu-text">Trình Độ</span></a> <!-- child menu -->
-                       
-                       
+                        <a href="{{ route('levels.index') }}" class="menu-link"> <i class='bx bx-line-chart'></i></span>
+                            <span class="menu-text">Trình Độ</span></a> <!-- child menu -->
+
+
                     </li>
                 </ul>
             </nav>

@@ -4,22 +4,23 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active">
-                <a href="{{ route('categories.index') }}"><i class='bx bx-chevrons-left mr-2'></i>Trang Chủ</a>
+                <a href="{{ route('staffs.index') }}"><i class='bx bx-chevrons-left mr-2'></i>Trang Chủ</a>
             </li>
         </ol>
     </nav>
     <!-- <button type="button" class="btn btn-success btn-floated"><span class="fa fa-plus"></span></button> -->
     <div class="d-md-flex align-items-md-start">
-        <h1 class="page-title mr-sm-auto">Danh mục khóa học</h1>
+        <h1 class="page-title mr-sm-auto">Nhân viên</h1>
         <div class="btn-toolbar">
-            <a href="{{ route('categories.create') }}" class="btn btn-primary mr-2">
-                <i class='bx bx-add-to-queue'></i>
+
+            <a href="{{ route('staffs.create') }}" class="btn btn-primary mr-2 ">
+                <i class='bx bx-user-plus'></i>
                 <span class="ml-1">Tạo mới</span>
             </a>
-            <!-- <a href="#" class="btn btn-primary">
+            <a href="#" class="btn btn-primary">
                 <i class='bx bx-vertical-bottom'></i>
-                <span class="ml-1">Export excel</span>
-            </a> -->
+                <span class="ml-1">Xuất excel</span>
+            </a>
         </div>
     </div>
 </header>
@@ -56,11 +57,15 @@
                                 </div>
                                 <div class="col">
                                     <input name="searchname" class="form-control" type="text"
-                                        placeholder="Tên danh mục..." value="" />
+                                        placeholder="Tên người dùng..." value="" />
                                 </div>
                                 <div class="col">
-                                    <input name="searchdescription" class="form-control" type="text" placeholder="Mô tả"
+                                    <input name="searchemail" class="form-control" type="text" placeholder="Email..."
                                         value="" />
+                                </div>
+                                <div class="col">
+                                    <input name="searchphone" class="form-control" type="text"
+                                        placeholder="Số điện thoại..." value="" />
                                 </div>
                                 <div class="col-lg-2">
                                     <button style='float:right' class="btn btn-secondary" data-toggle="modal"
@@ -74,31 +79,35 @@
                             <thead>
                                 <tr>
                                     <th> # </th>
-                                    <th>Danh mục</th>
-                                    <th>Mô tả</th>
+                                    <th>Tên</th>
+                                    <th>Email</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Chức vụ</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($items as $category)
+                                @foreach($items as $user)
                                 <tr>
-                                    <td class="align-middle">{{ $category->id }}</td>
+                                    <td class="align-middle">{{ $user->id }}</td>
                                     <td>
                                         <a href="#" class="tile tile-img mr-1">
-                                            <img class="img-fluid" src="{{ asset($category->image_url) }}" alt="">
+                                            <img class="img-fluid" src="{{ asset($user->avatar) }}" alt="">
                                         </a>
-                                        {{ $category->name }}
+                                        {{ $user->name }}
                                     </td>
-                                    <td class="align-middle">{{ $category->description }}</td>
+                                    <td class="align-middle">{{ $user->email }}</td>
+                                    <td class="align-middle">{{ $user->phone }}</td>
+                                    <td class="align-middle">{{ $user->group->name }}</td>
                                     <td class='d-flex justify-content-center align-items-center'>
                                         <span class="sr-only">Edit</span>
-                                        <a href="{{ route('categories.edit', $category->id) }}"
+                                        <a href="{{ route('staffs.edit', $user->id) }}"
                                             class="btn btn-sm btn-icon btn-secondary">
                                             <i class='bx bx-edit-alt'></i>
                                             <span class="sr-only">Remove</span>
                                         </a>
                                         <form style="display:inline" method="post"
-                                            action="{{ route('categories.destroy',$category->id) }}">
+                                            action="{{ route('staffs.destroy',$user->id) }}">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-sm btn-icon btn-secondary"
@@ -106,6 +115,11 @@
                                                 <i class='bx bx-trash'></i>
                                             </button>
                                         </form>
+                                        <a href="{{ route('staffs.show', $user->id) }}"
+                                            class="btn btn-sm btn-icon btn-secondary">
+                                            <i class='bx bxs-user-detail'></i>
+                                            <span class="sr-only">Detail</span>
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach
