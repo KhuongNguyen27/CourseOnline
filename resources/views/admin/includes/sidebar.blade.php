@@ -20,12 +20,25 @@
         <div class="aside-menu overflow-hidden">
             <nav id="stacked-menu" class="stacked-menu">
                 <ul class="menu">
+                // Cate
                     @if(Auth::user()->hasPermission('Category_viewAny'))
                     <li class="menu-item has-active">
                         <a href="{{ route('categories.index') }}" class="menu-link"><span
                                 class="menu-icon bx bx-category"></span> <span class="menu-text">Danh mục</span></a>
                     </li>
                     @endif
+                    // course
+                    <li class="menu-item has-active">
+                        <a href="{{ route('courses.index') }}" class="menu-link"><span
+                                class="menu-icon bx bxs-book"></span> <span class="menu-text">Khoá học</span></a>
+                    </li>
+                    // lv
+                    @if(Auth::user()->hasPermission('Level_viewAny'))
+                    <li class="menu-item has-active">
+                        <a href="{{ route('levels.index') }}" class="menu-link"><span
+                                class="menu-icon bx bx-line-chart-down"></span> <span class="menu-text">Trình độ</span></a>
+                    @endif
+                    //st
                     @if(Auth::user()->hasPermission('User_viewAny'))
                     <li class="menu-item has-active">
                         <a href="{{ route('students.index') }}" class="menu-link"><span
@@ -114,9 +127,8 @@
                     <li class="menu-item has-child">
                         <a href="{{ route('levels.index') }}" class="menu-link"> <i class='bx bx-line-chart'></i></span>
                             <span class="menu-text">Trình Độ</span></a> <!-- child menu -->
-
-
                     </li>
+                    @endif
                 </ul>
             </nav>
         </div>
