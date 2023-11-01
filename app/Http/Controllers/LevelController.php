@@ -15,10 +15,10 @@ class LevelController extends Controller
     /**
      * Display a listing of the resource.
      */
-function __construct(LevelServiceInterface $levelService)
-{
-   $this->levelService = $levelService;
-}
+    function __construct(LevelServiceInterface $levelService)
+    {
+    $this->levelService = $levelService;
+    }
      
     public function index(Request $request)
     {   
@@ -50,7 +50,6 @@ function __construct(LevelServiceInterface $levelService)
             $this->authorize('create',Level::class);
             $data = $request->except(['_token', '_method']);
             $this->levelService->store($data);
-            
             return redirect()->route('levels.index');
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage()); 
@@ -75,30 +74,25 @@ function __construct(LevelServiceInterface $levelService)
     public function edit(Level $level)
     {
         try {
-            
             // Lấy dữ liệu của cấp độ và truyền vào tệp Blade
-        $this->authorize('update',Level::class);
-
+            $this->authorize('update',Level::class);
             $item = $this->levelService->find($level->id);
-        return view('admin.levels.edit', compact('level', 'item'));
-    } catch (\Exception $e) {
-        Log::error('Bug occurred: ' . $e->getMessage());
+            return view('admin.levels.edit', compact('level', 'item'));
+        } catch (\Exception $e) {
+            Log::error('Bug occurred: ' . $e->getMessage());
+        }
     }
-}
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateLevelRequest $request, $id)
-{
-    try {
-        $data = $request->except(['_token', '_method']);
-        $this->levelService->update($data, $id);
-        return redirect()->route('levels.index');
-    } catch (\Exception $e) {
-        Log::error('Bug occurred: ' . $e->getMessage());    
+    {
+        try {
+            $data = $request->except(['_token', '_method']);
+            $this->levelService->update($data, $id);
+            return redirect()->route('levels.index');
+        } catch (\Exception $e) {
+            Log::error('Bug occurred: ' . $e->getMessage());    
+        }
     }
-}
     /**
      * Remove the specified resource from storage.
      */

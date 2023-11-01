@@ -17,4 +17,9 @@ class Order extends Model
     {
         return $this->belongsTo(Course::class,'course_id','id');
     }
+    protected $fillable = [
+        'user_id',
+        'course_id',
+        'point',
+    ]; 
 }
