@@ -10,7 +10,7 @@
     </nav>
     <!-- <button type="button" class="btn btn-success btn-floated"><span class="fa fa-plus"></span></button> -->
     <div class="d-md-flex align-items-md-start">
-        <h1 class="page-title mr-sm-auto">Nhân viên</h1>
+        <h1 class="page-title mr-sm-auto">Quản lí nhân viên</h1>
         <div class="btn-toolbar">
 
             <a href="{{ route('staffs.create') }}" class="btn btn-primary mr-2 ">

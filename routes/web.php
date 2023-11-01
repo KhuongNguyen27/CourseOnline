@@ -7,6 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,4 +30,5 @@ Route::middleware(['auth','preventhistory'])->group(function(){
     Route::resource('courses',CourseController::class);
     Route::resource('students',StudentController::class);
     Route::resource('staffs',StaffController::class);
+    Route::resource('orders',OrderController::class);
 });
