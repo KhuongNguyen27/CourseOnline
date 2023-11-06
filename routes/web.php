@@ -6,7 +6,10 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StaffController;
+use App\Models\Section;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +29,17 @@ Route::post('/checkLogin',[AuthController::class,'checkLogin'])->name('auth.chec
 Route::middleware(['auth','preventhistory'])->group(function(){
     Route::resource('categories',CategoryController::class);
     Route::resource('levels',LevelController::class);
+
+    Route::group(['prefix' => 'courses'], function () {
+        Route::get('/trash', [CourseController::class, 'trash'])->name('courses.trash'); //
+        Route::post('/restore/{id}', [CourseController::class, 'restore'])->name('courses.restore'); //khôi phục
+        Route::post('/deleteforever/{id}', [CourseController::class, 'deleteforever'])->name('courses.deleteforever'); //viễn viễn
+    });
     Route::resource('courses',CourseController::class);
+    
     Route::resource('students',StudentController::class);
     Route::resource('staffs',StaffController::class);
+    Route::resource('sections',SectionController::class);
 });
+
+    

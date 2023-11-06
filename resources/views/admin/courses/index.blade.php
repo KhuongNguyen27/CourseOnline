@@ -23,37 +23,59 @@
         </div>
     </div>
 </header>
+@if (session('success'))
+<div class="alert alert-success" role="alert">
+    {{ session('success') }}
+</div>
+@endif
+@if (session('error'))
+<div class="alert alert-danger" role="alert">
+    {{ session('error') }}
+</div>
+@endif
 <div class="page-section">
     <div class="card card-fluid">
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active " href="#">Tất cả</a>
+                    <a class="nav-link active " href="{{ route('courses.index') }}">Tất cả</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">Trash</a>
-                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('courses.trash') }}">Thùng rác</a>
+                </li>
             </ul>
         </div>
         <div class="card-body">
             <div class="row mb-2">
                 <div class="col">
-                    <form action="" method="GET" id="form-search">
-                        <div class="input-group input-group-alt">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modalFilterColumns">Tìm kiếm nâng cao</button>
+                <form action="" method="GET" id="form-search">
+                        <div class="row">
+                            <div class="col">
+                                <input name="id" class="form-control" type="text" placeholder=" Id..." value="" />
                             </div>
-                            <div class="input-group has-clearable">
-                                <button type="button" class="close trigger-submit trigger-submit-delay" aria-label="Close">
-                                    <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
-                                </button>
-                                <div class="input-group-prepend trigger-submit">
-                                    <span class="input-group-text"><span class="bx bx-search-alt-2"></span></span>
-                                </div>
-                                <input type="text" class="form-control" name="query" value="" placeholder="Search....">
+                            <div class="col">
+                                <input name="searchname" class="form-control" type="text" placeholder=" tên khoá học..."
+                                    value="" />
                             </div>
-                            <div class="input-group-append">
-                                <button class="btn btn-secondary" data-toggle="modal" data-target="#modalSaveSearch" type="button">Lưu bộ lọc</button>
+                            <div class="col">
+                                <input name="searchcategory" class="form-control" type="text" placeholder=" danh mục..."
+                                    value="" />
+                            </div>
+                            <div class="col">
+                                <input name="searchprice" class="form-control" type="text" placeholder=" giá..."
+                                    value="" />
+                            </div>
+                            <div class="col">
+                                <input name="searchlevel" class="form-control" type="text" placeholder=" trình độ..."
+                                    value="" />
+                            </div>
+                            <div class="col">
+                                <input name="searchformality" class="form-control" type="text" placeholder=" hình thức học..."
+                                    value="" />
+                            </div>
+                            <div class="col-lg-2">
+                                <button class="btn btn-secondary" data-toggle="modal" data-target="#modalSaveSearch"
+                                    type="submit">Tìm Kiếm</button>
                             </div>
                         </div>
                     </form>
@@ -77,6 +99,7 @@
                                 @foreach($items as $course)
                                 <tr>
                                     <td class="align-middle">{{ $course->id }}</td>
+
                                     <td class="align-middle">{{ $course->name }}</td>
                                     <td>
                                         <a href="#" class="tile tile-img mr-1">
@@ -102,7 +125,7 @@
                                         <i class="bx bx-edit-alt"></i>
                                            
                                             <span class="sr-only">show</span>
-                                            <a href="#" class="btn btn-sm btn-icon btn-secondary">
+                                            <a href="{{ route('courses.show', $course->id) }}" class="btn btn-sm btn-icon btn-secondary">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                                 <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
                                                 <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />

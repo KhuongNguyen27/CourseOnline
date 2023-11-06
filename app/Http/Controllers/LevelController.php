@@ -51,7 +51,7 @@ function __construct(LevelServiceInterface $levelService)
             $data = $request->except(['_token', '_method']);
             $this->levelService->store($data);
             
-            return redirect()->route('levels.index');
+            return redirect()->route('levels.index')->with('success','Cập nhật thành công');
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage()); 
         }
@@ -94,7 +94,7 @@ function __construct(LevelServiceInterface $levelService)
     try {
         $data = $request->except(['_token', '_method']);
         $this->levelService->update($data, $id);
-        return redirect()->route('levels.index');
+        return redirect()->route('levels.index')->with('success','Cập nhật thành công');
     } catch (\Exception $e) {
         Log::error('Bug occurred: ' . $e->getMessage());    
     }
