@@ -50,7 +50,8 @@ class LevelController extends Controller
             $this->authorize('create',Level::class);
             $data = $request->except(['_token', '_method']);
             $this->levelService->store($data);
-            return redirect()->route('levels.index');
+            
+            return redirect()->route('levels.index')->with('success','Cập nhật thành công');
         } catch (\Exception $e) {
             Log::error('Bug occurred: ' . $e->getMessage()); 
         }
@@ -84,14 +85,14 @@ class LevelController extends Controller
     }
 
     public function update(UpdateLevelRequest $request, $id)
-    {
-        try {
-            $data = $request->except(['_token', '_method']);
-            $this->levelService->update($data, $id);
-            return redirect()->route('levels.index');
-        } catch (\Exception $e) {
-            Log::error('Bug occurred: ' . $e->getMessage());    
-        }
+{
+    try {
+        $data = $request->except(['_token', '_method']);
+        $this->levelService->update($data, $id);
+        return redirect()->route('levels.index')->with('success','Cập nhật thành công');
+    } catch (\Exception $e) {
+        Log::error('Bug occurred: ' . $e->getMessage());    
+    
     }
     /**
      * Remove the specified resource from storage.
