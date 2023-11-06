@@ -10,6 +10,7 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StaffController;
 use App\Models\Section;
 
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,3 +44,5 @@ Route::middleware(['auth','preventhistory'])->group(function(){
 });
 
     
+    Route::resource('orders',OrderController::class);
+});

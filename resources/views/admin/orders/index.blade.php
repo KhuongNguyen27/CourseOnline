@@ -4,21 +4,21 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active">
-                <a href="{{ route('categories.index') }}"><i class='bx bx-chevrons-left mr-2'></i>Trang Chủ</a>
+                <a href="{{ route('orders.index') }}"><i class='bx bx-chevrons-left mr-2'></i>Trang Chủ</a>
             </li>
         </ol>
     </nav>
     <!-- <button type="button" class="btn btn-success btn-floated"><span class="fa fa-plus"></span></button> -->
     <div class="d-md-flex align-items-md-start">
-        <h1 class="page-title mr-sm-auto">Danh mục khóa học</h1>
+        <h1 class="page-title mr-sm-auto">Quản lí giao dịch</h1>
         <div class="btn-toolbar">
-            <a href="{{ route('categories.create') }}" class="btn btn-primary mr-2">
-                <i class='bx bx-add-to-queue'></i>
+            <a href="{{ route('orders.create') }}" class="btn btn-primary mr-2 ">
+                <i class='bx bx-user-plus'></i>
                 <span class="ml-1">Tạo mới</span>
             </a>
             <!-- <a href="#" class="btn btn-primary">
                 <i class='bx bx-vertical-bottom'></i>
-                <span class="ml-1">Export excel</span>
+                <span class="ml-1">Xuất excel</span>
             </a> -->
         </div>
     </div>
@@ -56,7 +56,16 @@
                                 </div>
                                 <div class="col">
                                     <input name="searchname" class="form-control" type="text"
-                                        placeholder="Tên danh mục..." value="" />
+                                        placeholder="Tên người dùng..." value="" />
+                                </div>
+                                <div class="col">
+                                    <input name="searchcourse" class="form-control" type="text"
+                                        placeholder="Tên khóa học" value="" />
+                                </div>
+                                <div>
+                                    <button style='float:right' class="btn btn-secondary" type="submit"><a
+                                            href="{{ route('orders.index') }}"><i
+                                                class='bx bx-refresh'></i></a></button>
                                 </div>
                                 <div class="col-lg-2">
                                     <button style='float:right' class="btn btn-secondary" data-toggle="modal"
@@ -70,36 +79,30 @@
                             <thead>
                                 <tr>
                                     <th> # </th>
-                                    <th>Danh mục</th>
-                                    <th>Hành động</th>
+                                    <th>Người mua</th>
+                                    <th>Khóa học</th>
+                                    <th>Xu</th>
+                                    <th>Ngày tạo</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($items as $category)
+                                @foreach($items as $order)
                                 <tr>
-                                    <td class="align-middle">{{ $category->id }}</td>
-                                    <td>
+                                    <td class="align-middle">{{ $order->id }}</td>
+                                    <td class="align-middle">
                                         <a href="#" class="tile tile-img mr-1">
-                                            <img class="img-fluid" src="{{ asset($category->image_url) }}" alt="">
+                                            <img class="img-fluid" src="{{ asset($order->user->avatar) }}" alt="">
                                         </a>
-                                        {{ $category->name }}
+                                        {{ $order->user->name }}
                                     </td>
-                                    <td class='align-middle'>
-                                        <span class="sr-only">Edit</span>
-                                        <a href="{{ route('categories.edit', $category->id) }}"
-                                            class="btn btn-sm btn-icon btn-secondary">
-                                            <i class='bx bx-edit-alt'></i>
-                                            <span class="sr-only">Remove</span>
+                                    <td class="align-middle">
+                                        <a href="#" class="tile tile-img mr-1">
+                                            <img class="img-fluid" src="{{ asset($order->course->image_url) }}" alt="">
                                         </a>
-                                        <form style="display:inline" method="post"
-                                            action="{{ route('categories.destroy',$category->id) }}">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn btn-sm btn-icon btn-secondary"
-                                                onclick="return confirm('Are you sure?')">
-                                                <i class='bx bx-trash'></i>
-                                            </button>
-                                        </form>
+                                        {{ $order->course->name }}
+                                    </td>
+                                    <td class="align-middle">{{ $order->point }}</td>
+                                    <td class="align-middle">{{ date('d-m-Y H:i:s', strtotime($order->created_at)) }}
                                     </td>
                                 </tr>
                                 @endforeach

@@ -20,7 +20,6 @@ class OrderFactory extends Factory
             'course_id' => fake()->numberBetween($min = 1, $max = 10),
             'user_id' => fake()->numberBetween($min = 1, $max = 10),
             'point' => fake()->numberBetween($min = 100, $max = 500),
-            'status' => fake()->boolean(),
         ];
     }
 }
